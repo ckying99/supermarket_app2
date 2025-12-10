@@ -47,10 +47,11 @@ function Layout() {
           <ul className="menu bg-base-200 w-56">
             <SelectedCatContext value={{ selected, setSelected }}>
               <div className="dropdown dropdown-bottom">
-                <div tabIndex={0} role="button" className="btn m-1">Click ⬇️</div>
+                <div tabIndex={0} role="button" className="btn m-1">Shop for... ⬇️</div>
                 <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
 
                   {showCategories}
+                  
                 </ul>
 
               </div>

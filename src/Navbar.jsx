@@ -1,9 +1,8 @@
 import Drawer from './Drawer.jsx'
 import { useState, useEffect } from 'react'
+import SearchDropDown from './SearchDropDown.jsx'
 
 export function Navbar() {
-
-
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -22,9 +21,12 @@ export function Navbar() {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><a>Home</a></li>
-                        <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
 
                 </ul>
+            </div>
+            <div>
+                <SearchDropDown />
+
             </div>
             <div className="navbar-end">
                 <Drawer />
