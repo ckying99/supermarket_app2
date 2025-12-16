@@ -14,29 +14,29 @@ export function ProductPage() {
       )
 
   }, [])
-    const { cart, setInCart } = useContext(CartContext);
-    function addItem() {
-      let found = false;
-      cart.map(cartItem => cartItem.id == id ? found = true : cartItem);
-  
-      if (found == false) {
-        setInCart([...cart, {
-          id: product.id,
-          name: product.title,
-          price: product.price,
-          quantity: 1,
-          image: product.thumbnail
-        }])
-      }
-      else if (found == true) {
-        setInCart(cart.map(cartItem => cartItem.id == id ? {
-          ...cartItem,
-          quantity: cartItem.quantity + 1
-        } : cartItem))
-      }
-  
-  
+  const { cart, setInCart } = useContext(CartContext);
+  function addItem() {
+    let found = false;
+    cart.map(cartItem => cartItem.id == id ? found = true : cartItem);
+
+    if (found == false) {
+      setInCart([...cart, {
+        id: product.id,
+        name: product.title,
+        price: product.price,
+        quantity: 1,
+        image: product.thumbnail
+      }])
     }
+    else if (found == true) {
+      setInCart(cart.map(cartItem => cartItem.id == id ? {
+        ...cartItem,
+        quantity: cartItem.quantity + 1
+      } : cartItem))
+    }
+
+
+  }
 
   return (
     product ?
