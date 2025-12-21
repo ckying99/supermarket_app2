@@ -41,11 +41,11 @@ function Layout() {
   }
   )
   return (
-    <CartContext value={{ cart, setInCart }}>
-      <DisplayItemsContext value={{ items, setItems }}>
+    <CartContext.Provider value={{ cart, setInCart }}>
+      <DisplayItemsContext.Provider value={{ items, setItems }}>
         {/* <div className="flex"> */}
           <ul className="menu bg-base-200 w-56">
-            <SelectedCatContext value={{ selected, setSelected }}>
+            <SelectedCatContext.Provider value={{ selected, setSelected }}>
               <div className="dropdown dropdown-bottom">
                 <div tabIndex={0} role="button" className="btn m-1">Shop for... ⬇️</div>
                 <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
@@ -55,7 +55,7 @@ function Layout() {
                 </ul>
 
               </div>
-            </SelectedCatContext>
+            </SelectedCatContext.Provider>
           </ul>
           <div className="flex-1">
 
@@ -68,8 +68,8 @@ function Layout() {
           </div>
         {/* </div> */}
 
-      </DisplayItemsContext>
-    </CartContext>
+      </DisplayItemsContext.Provider>
+    </CartContext.Provider>
   )
 }
 

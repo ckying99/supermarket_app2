@@ -13,7 +13,7 @@ export function ProductPage() {
         setProduct(data)
       )
 
-  }, [])
+  }, [id])
   const { cart, setInCart } = useContext(CartContext);
   function addItem() {
     let found = false;

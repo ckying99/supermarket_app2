@@ -1,4 +1,5 @@
-import { useState,useEffect,useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom'
 
 export default function SearchDropDown({ searchTerm, onSelect }) {
     const [query, setQuery] = useState('')
@@ -13,12 +14,12 @@ export default function SearchDropDown({ searchTerm, onSelect }) {
                 .then(res => res.json())
                 .then(data => setSuggestions(data.products || []))
                 .catch(() => setSuggestions([]))
-        },[query]
+        }, [query]
 
     )
 
     console.log('query:', query);
-    
+
     return (
         <div >
             <ul className="flex list-none">
@@ -26,24 +27,22 @@ export default function SearchDropDown({ searchTerm, onSelect }) {
                     <input
                         type="text"
                         value={query}
-                        onChange={ e => setQuery(e.target.value)}
+                        onChange={e => setQuery(e.target.value)}
                         className="input"
                         placeholder="Search Product..."
                         list="products"
                         onFocus={() => setFocus(true)}
-                        onBlur={() => setFocus(false)}
+                        // delay hiding so clicks on Links register before the list disappears
+                        onBlur={() => setTimeout(() => setFocus(false), 150)}
                     />
 
                     {focus && suggestions && suggestions.length > 0 && (
-                        <ul >
-                            { suggestions.map((item) => (
-                                <li key={item.id} >
-                                    <button
-                                        type="button"
-                                        // use onMouseDown so selection happens before blur
-                                    >
+                        <ul>
+                            {suggestions.map((item) => (
+                                <li key={item.id}>
+                                    <Link to={`/product/${item.id}`} className="block px-2 py-1">
                                         {item.title}
-                                    </button>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -54,7 +53,7 @@ export default function SearchDropDown({ searchTerm, onSelect }) {
                         onClick={() => {
                             // make sure dropdown is visible after clicking
                             setFocus(true);
-                            loadSuggestions();
+                            // loadSuggestions();
                         }}
                         className="btn"
                     >
