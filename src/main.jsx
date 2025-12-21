@@ -8,6 +8,7 @@ import './index.css'
 import { App } from './App.jsx'
 import { Link } from 'react-router-dom'
 import Category from './Category.jsx';
+import { SearchProducts } from './SearchProducts.jsx';
 
 export const CartContext = createContext(null)
 export const DisplayItemsContext = createContext(null)
@@ -64,6 +65,8 @@ function Layout() {
               <Route path="/home" element={<App />} />
               <Route path="/home/:category" element={<App />} />
               <Route path="/product/:id" element={<ProductPage />} />
+              <Route path="/product/search/:query" element={<SearchProducts />} />
+
             </Routes>
           </div>
         {/* </div> */}

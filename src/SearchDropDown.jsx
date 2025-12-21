@@ -49,6 +49,7 @@ export default function SearchDropDown({ searchTerm, onSelect }) {
                     )}
                 </li>
                 <li>
+                    <Link to={`/product/search/${query}`}>
                     <button
                         onClick={() => {
                             // make sure dropdown is visible after clicking
@@ -59,6 +60,7 @@ export default function SearchDropDown({ searchTerm, onSelect }) {
                     >
                         Search
                     </button>
+                    </Link>
                 </li>
             </ul>
         </div>
