@@ -15,7 +15,23 @@ export const DisplayItemsContext = createContext(null)
 export const SelectedCatContext = createContext(null)
 function Layout() {
   const [items, setItems] = useState([]);
-  const [cart, setInCart] = useState([]);
+  const [cart, setInCart] =  useState(() => {
+  const storedCart = localStorage.getItem('cart');
+    if (storedCart) return JSON.parse(storedCart)
+    else return [];
+  });
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart){
+      setInCart(JSON.parse(storedCart));
+    }
+  },[]);
+
+  useEffect(() => {
+      localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
   const [categories, setCategories] = useState([]);
   const [selected, setSelected] = useState(null);
   useEffect(() => {
@@ -26,6 +42,7 @@ function Layout() {
       )
 
   }, [])
+
   const showCategories = categories.map(category => {
     return (
       category.name == selected ? <Link to={`/home/${category.slug}`}>
@@ -59,7 +76,6 @@ function Layout() {
             </SelectedCatContext.Provider>
           </ul>
           <div className="flex-1">
-
             <Navbar />
             <Routes>
               <Route path="/home" element={<App />} />

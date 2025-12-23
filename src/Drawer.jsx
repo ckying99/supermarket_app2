@@ -66,6 +66,7 @@ export default function Drawer() {
 
                   <Button buttonName="+" buttonFunction={() => increase(item.id)}
                   ></Button>
+
                 </li>
                 </div>
                 )

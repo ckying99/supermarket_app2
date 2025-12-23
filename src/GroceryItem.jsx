@@ -13,7 +13,8 @@ export default function GroceryItem({ id, image, name, price, description }) {
         id: id,
         name: name,
         price: price,
-        quantity: 1
+        quantity: 1,
+        image: image
       }])
     }
     else if (found == true) {
